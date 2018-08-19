@@ -20,7 +20,7 @@
             <tr>
                 <td>{{ $advert->id }}</td>
                 <td>{{ $advert->updated_at }}</td>
-                <td><a href="{{ route('adverts.show', $advert) }}" target="_blank">{{ $advert->title }}</a></td>
+                <td><a href="{{ route('adverts.show', [$subdomain_userid, $advert]) }}" target="_blank">{{ $advert->title }}</a></td>
                 <td>
                     @if ($advert->region)
                         {{ $advert->region->name }}
@@ -28,7 +28,7 @@
                 </td>
                 <td>{{ $advert->category->name }}</td>
                 <td>
-                    <form method="POST" action="{{ route('cabinet.favorites.remove', $advert) }}" class="mr-1">
+                    <form method="POST" action="{{ route('cabinet.favorites.remove', [$subdomain_userid, $advert]) }}" class="mr-1">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-sm btn-danger"><span class="fa fa-remove"></span> Remove</button>

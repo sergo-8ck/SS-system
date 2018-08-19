@@ -37,10 +37,11 @@ Route::get('/banner/get', 'BannerController@get')->name('banner.get');
 Route::get('/banner/{banner}/click', 'BannerController@click')->name('banner.click');
 
 Route::group([
+  'domain' => env('APP_URL'),
   'prefix' => 'adverts',
   'as' => 'adverts.',
   'namespace' => 'Adverts',
-], function ($subdomain_userid) {
+], function () {
   Route::get('/show/{advert}', 'AdvertController@show')->name('show');
   Route::post('/show/{advert}/phone', 'AdvertController@phone')->name('phone');
   Route::post('/show/{advert}/favorites', 'FavoriteController@add')->name('favorites');
@@ -108,7 +109,7 @@ Route::group(
       'as' => 'banners.',
       'namespace' => 'Banners',
       'middleware' => [App\Http\Middleware\FilledProfile::class],
-    ], function () {
+    ], function ($subdomain_userid) {
       Route::get('/', 'BannerController@index')->name('index');
       Route::get('/create', 'CreateController@category')->name('create');
       Route::get('/create/region/{category}/{region?}', 'CreateController@region')->name('create.region');

@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class AdvertController extends Controller
 {
-  public function index($subdomain_userid)
+  public function index()
   {
 
     $adverts = Advert::forUser(Auth::user())->orderByDesc('id')->paginate(20);

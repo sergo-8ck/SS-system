@@ -5,11 +5,11 @@
 
     @if ($region)
         <p>
-            <a href="{{ route('cabinet.banners.create.banner', [$category, $region]) }}" class="btn btn-success">Add Advert for {{ $region->name }}</a>
+            <a href="{{ route('cabinet.banners.create.banner', [$subdomain_userid, $category, $region]) }}" class="btn btn-success">Add Advert for {{ $region->name }}</a>
         </p>
     @else
         <p>
-            <a href="{{ route('cabinet.banners.create.banner', [$category]) }}" class="btn btn-success">Add Advert for all regions</a>
+            <a href="{{ route('cabinet.banners.create.banner', [$subdomain_userid, $category]) }}" class="btn btn-success">Add Advert for all regions</a>
         </p>
     @endif
 
@@ -18,7 +18,7 @@
     <ul>
         @foreach ($regions as $current)
             <li>
-                <a href="{{ route('cabinet.banners.create.region', [$category, $current]) }}">{{ $current->name }}</a>
+                <a href="{{ route('cabinet.banners.create.region', [$subdomain_userid, $category, $current]) }}">{{ $current->name }}</a>
             </li>
         @endforeach
     </ul>

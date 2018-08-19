@@ -22,7 +22,6 @@ $('.banner').each(function () {
     var format = block.data('format');
     var category = block.data('category');
     var region = block.data('region');
-
     axios
         .get(url, {params: {
             format: format,

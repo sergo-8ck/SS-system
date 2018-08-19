@@ -3,7 +3,7 @@
 @section('content')
     @include('cabinet.banners._nav')
 
-    <form method="POST" action="{{ route('cabinet.banners.edit', $banner) }}">
+    <form method="POST" action="{{ route('cabinet.banners.edit', [$subdomain_userid, $banner])}}">
         @csrf
         @method('PUT')
 

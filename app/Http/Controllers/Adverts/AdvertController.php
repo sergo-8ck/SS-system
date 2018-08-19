@@ -57,7 +57,7 @@ class AdvertController extends Controller
         ));
     }
 
-    public function show(Advert $advert)
+    public function show(Advert $advert, $subdomain_userid = null)
     {
         if (!($advert->isActive() || Gate::allows('show-advert', $advert))) {
             abort(403);
@@ -65,7 +65,7 @@ class AdvertController extends Controller
 
         $user = Auth::user();
 
-        return view('adverts.show', compact('advert', 'user'));
+        return view('adverts.show', compact('advert', 'user', 'subdomain_userid'));
     }
 
     public function phone(Advert $advert): string

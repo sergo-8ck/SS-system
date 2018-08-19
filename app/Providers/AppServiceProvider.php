@@ -11,7 +11,21 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        //
+      \View::composer('*', function ($view) {
+        if(auth()->check()){
+          $subdomain_userid = auth()->user()->id;
+        } else{
+          $subdomain_userid = '';
+        }
+
+
+
+
+        $view->with([
+          'subdomain_userid' => $subdomain_userid
+        ]);
+      });
+
     }
 
     public function register(): void

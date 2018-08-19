@@ -22,22 +22,22 @@ class CreateController extends Controller
     {
         $categories = Category::defaultOrder()->withDepth()->get()->toTree();
 
-        return view('cabinet.adverts.create.category', compact('categories'));
+        return view('cabinet.adverts.create.category', compact('categories', 'subdomain_userid'));
     }
 
-    public function region(Category $category, Region $region = null)
+    public function region($subdomain_userid, Category $category, Region $region = null)
     {
         $regions = Region::where('parent_id', $region ? $region->id : null)->orderBy('name')->get();
 
-        return view('cabinet.adverts.create.region', compact('category', 'region', 'regions'));
+        return view('cabinet.adverts.create.region', compact('category', 'region', 'regions', 'subdomain_userid'));
     }
 
-    public function advert(Category $category, Region $region = null)
+    public function advert($subdomain_userid, Category $category, Region $region = null)
     {
-        return view('cabinet.adverts.create.advert', compact('category', 'region'));
+        return view('cabinet.adverts.create.advert', compact('category', 'region', 'subdomain_userid'));
     }
 
-    public function store(CreateRequest $request, Category $category, Region $region = null)
+    public function store( CreateRequest $request, $subdomain_userid,  Category $category, Region $region = null)
     {
         try {
             $advert = $this->service->create(
@@ -50,6 +50,6 @@ class CreateController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('adverts.show', $advert);
+        return redirect()->route('adverts.show', [$subdomain_userid, $advert]);
     }
 }

@@ -3,7 +3,7 @@
 @section('content')
     @include('cabinet.adverts._nav')
 
-    <form method="POST" action="{{ route('cabinet.adverts.create.advert.store', [$category, $region]) }}">
+    <form method="POST" action="{{ route('cabinet.adverts.create.advert.store', [$subdomain_userid,$category, $region]) }}">
         @csrf
 
         <div class="card mb-3">

@@ -19,28 +19,28 @@ class CreateController extends Controller
         $this->service = $service;
     }
 
-    public function category()
+    public function category($subdomain_userid)
     {
         $categories = Category::defaultOrder()->withDepth()->get()->toTree();
 
-        return view('cabinet.banners.create.category', compact('categories'));
+        return view('cabinet.banners.create.category', compact('categories', 'subdomain_userid'));
     }
 
-    public function region(Category $category, Region $region = null)
+    public function region($subdomain_userid, Category $category, Region $region = null)
     {
         $regions = Region::where('parent_id', $region ? $region->id : null)->orderBy('name')->get();
 
-        return view('cabinet.banners.create.region', compact('category', 'region', 'regions'));
+        return view('cabinet.banners.create.region', compact('category', 'region', 'regions', 'subdomain_userid'));
     }
 
-    public function banner(Category $category, Region $region = null)
+    public function banner($subdomain_userid, Category $category, Region $region = null)
     {
         $formats = Banner::formatsList();
 
-        return view('cabinet.banners.create.banner', compact('category', 'region', 'formats'));
+        return view('cabinet.banners.create.banner', compact('category', 'region', 'formats', 'subdomain_userid'));
     }
 
-    public function store(CreateRequest $request, Category $category, Region $region = null)
+    public function store(CreateRequest $request, $subdomain_userid, Category $category, Region $region = null)
     {
         try {
             $banner = $this->service->create(
@@ -53,6 +53,6 @@ class CreateController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.banners.show', $banner);
+        return redirect()->route('cabinet.banners.show', [$subdomain_userid, $banner]);
     }
 }

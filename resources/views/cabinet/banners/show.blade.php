@@ -6,33 +6,33 @@
     <div class="d-flex flex-row mb-3">
 
         @if ($banner->canBeChanged())
-            <a href="{{ route('cabinet.banners.edit', $banner) }}" class="btn btn-primary mr-1">Edit</a>
-            <a href="{{ route('cabinet.banners.file', $banner) }}" class="btn btn-primary mr-1">Change File</a>
+            <a href="{{ route('cabinet.banners.edit', [$subdomain_userid, $banner]) }}" class="btn btn-primary mr-1">Edit</a>
+            <a href="{{ route('cabinet.banners.file', [$subdomain_userid, $banner]) }}" class="btn btn-primary mr-1">Change File</a>
         @endif
 
         @if ($banner->isDraft())
-            <form method="POST" action="{{ route('cabinet.banners.send', $banner) }}" class="mr-1">
+            <form method="POST" action="{{ route('cabinet.banners.send', [$subdomain_userid, $banner]) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-success">Send to Moderation</button>
             </form>
         @endif
 
         @if ($banner->isOnModeration())
-            <form method="POST" action="{{ route('cabinet.banners.cancel', $banner) }}" class="mr-1">
+            <form method="POST" action="{{ route('cabinet.banners.cancel', [$subdomain_userid, $banner]) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-secondary">Cancel Moderation</button>
             </form>
         @endif
 
         @if ($banner->isModerated())
-            <form method="POST" action="{{ route('cabinet.banners.order', $banner) }}" class="mr-1">
+            <form method="POST" action="{{ route('cabinet.banners.order', [$subdomain_userid, $banner]) }}" class="mr-1">
                 @csrf
                 <button class="btn btn-success">Order for Payment</button>
             </form>
         @endif
 
         @if ($banner->canBeRemoved())
-            <form method="POST" action="{{ route('cabinet.banners.destroy', $banner) }}" class="mr-1">
+            <form method="POST" action="{{ route('cabinet.banners.destroy', [$subdomain_userid, $banner]) }}" class="mr-1">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger">Delete</button>

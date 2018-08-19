@@ -30,7 +30,7 @@ class AdvertController extends Controller
             $query->where('id', $value);
         }
 
-        if (!empty($value = $request->get('title'))) {
+        if (!empty($value = $request->get('name'))) {
             $query->where('title', 'like', '%' . $value . '%');
         }
 

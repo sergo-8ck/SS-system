@@ -36,6 +36,9 @@ if (! function_exists('page_path')) {
      */
     function route($name, $parameters = [], $absolute = true)
     {
+      if($parameters == 'empty'){
+          return app('url')->route($name, '', $absolute);
+      }
       if(auth()->check()){
         if(empty($parameters)){
           return app('url')->route($name, auth()->user()->id, $absolute);

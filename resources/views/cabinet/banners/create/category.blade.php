@@ -5,6 +5,6 @@
 
     <p>Choose category:</p>
 
-    @include('cabinet.banners.create._categories', ['categories' => $categories])
+    @include('cabinet.banners.create._categories', ['categories' => $categories, $subdomain_userid])
 
 @endsection

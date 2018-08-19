@@ -22,7 +22,7 @@
                 <td>{{ $ticket->id }}</td>
                 <td>{{ $ticket->created_at }}</td>
                 <td>{{ $ticket->updated_at }}</td>
-                <td><a href="{{ route('cabinet.tickets.show', $ticket) }}" target="_blank">{{ $ticket->subject }}</a></td>
+                <td><a href="{{ route('cabinet.tickets.show', [auth()->user()->id, $ticket]) }}" target="_blank">{{ $ticket->subject }}</a></td>
                 <td>
                     @if ($ticket->isOpen())
                         <span class="badge badge-danger">Open</span>

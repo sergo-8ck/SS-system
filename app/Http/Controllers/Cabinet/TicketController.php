@@ -26,9 +26,9 @@ class TicketController extends Controller
         return view('cabinet.tickets.index', compact('tickets'));
     }
 
-    public function show(Ticket $ticket)
+    public function show($subdomain_userid, Ticket $ticket)
     {
-        return view('cabinet.tickets.show', compact('ticket'));
+        return view('cabinet.tickets.show', compact('ticket', 'subdomain_userid'));
     }
 
     public function create()
@@ -36,7 +36,7 @@ class TicketController extends Controller
         return view('cabinet.tickets.create');
     }
 
-    public function store(CreateRequest $request)
+    public function store(CreateRequest $request, $subdomain_userid)
     {
         try {
             $ticket = $this->service->create(Auth::id(), $request);
@@ -44,10 +44,10 @@ class TicketController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.tickets.show', $ticket);
+        return redirect()->route('cabinet.tickets.show', compact('ticket', 'subdomain_userid'));
     }
 
-    public function message(MessageRequest $request, Ticket $ticket)
+    public function message(MessageRequest $request, $subdomain_userid, Ticket $ticket)
     {
         try {
             $this->service->message(Auth::id(), $ticket->id, $request);
@@ -55,10 +55,10 @@ class TicketController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.tickets.show', $ticket);
+        return redirect()->route('cabinet.tickets.show', compact('ticket', 'subdomain_userid'));
     }
 
-    public function destroy(Ticket $ticket)
+    public function destroy($subdomain_userid,Ticket $ticket)
     {
         $this->checkAccess($ticket);
         try {
@@ -67,7 +67,7 @@ class TicketController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.favorites.index');
+        return redirect()->route('cabinet.tickets.index', $subdomain_userid);
     }
 
     private function checkAccess(Ticket $ticket): void

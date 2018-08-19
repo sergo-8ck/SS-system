@@ -3,7 +3,7 @@
 @section('content')
     @include('cabinet.banners._nav')
 
-    <form method="POST" action="{{ route('cabinet.banners.file', $banner) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('cabinet.banners.file', [$subdomain_userid,$banner])}}" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

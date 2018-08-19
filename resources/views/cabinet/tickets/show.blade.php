@@ -5,7 +5,7 @@
 
     <div class="d-flex flex-row mb-3">
         @if ($ticket->canBeRemoved())
-            <form method="POST" action="{{ route('cabinet.tickets.destroy', $ticket) }}" class="mr-1">
+            <form method="POST" action="{{ route('cabinet.tickets.destroy', [$subdomain_userid, $ticket]) }}" class="mr-1">
                 @csrf
                 @method('DELETE')
                 <button class="btn btn-danger">Delete</button>
@@ -95,7 +95,7 @@
     @endforeach
 
     @if ($ticket->allowsMessages())
-        <form method="POST" action="{{ route('cabinet.tickets.message', $ticket) }}">
+        <form method="POST" action="{{ route('cabinet.tickets.message', [$subdomain_userid, $ticket])}}">
             @csrf
 
             <div class="form-group">

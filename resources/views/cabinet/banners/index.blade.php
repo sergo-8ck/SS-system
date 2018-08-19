@@ -21,7 +21,7 @@
         @foreach ($banners as $banner)
             <tr>
                 <td>{{ $banner->id }}</td>
-                <td><a href="{{ route('cabinet.banners.show', $banner) }}" target="_blank">{{ $banner->name }}</a></td>
+                <td><a href="{{ route('cabinet.banners.show', [$subdomain_userid, $banner])}}" target="_blank">{{ $banner->name }}</a></td>
                 <td>
                     @if ($banner->region)
                         {{ $banner->region->name }}

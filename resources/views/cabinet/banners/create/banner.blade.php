@@ -3,7 +3,7 @@
 @section('content')
     @include('cabinet.banners._nav')
 
-    <form method="POST" action="{{ route('cabinet.banners.create.banner.store', [$category, $region]) }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('cabinet.banners.create.banner.store', [$subdomain_userid, $category, $region]) }}" enctype="multipart/form-data">
         @csrf
 
         <div class="form-group">

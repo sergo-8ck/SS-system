@@ -19,29 +19,29 @@ class BannerController extends Controller
         $this->service = $service;
     }
     
-    public function index()
+    public function index($subdomain_userid)
     {
         $banners = Banner::forUser(Auth::user())->orderByDesc('id')->paginate(20);
 
-        return view('cabinet.banners.index', compact('banners'));
+        return view('cabinet.banners.index', compact('banners', 'subdomain_userid' ));
     }
 
-    public function show(Banner $banner)
+    public function show($subdomain_userid, Banner $banner)
     {
         $this->checkAccess($banner);
-        return view('cabinet.banners.show', compact('banner'));
+        return view('cabinet.banners.show', compact('banner', 'subdomain_userid'));
     }
 
-    public function editForm(Banner $banner)
+    public function editForm($subdomain_userid, Banner $banner)
     {
         $this->checkAccess($banner);
         if (!$banner->canBeChanged()) {
-            return redirect()->route('cabinet.banners.show', $banner)->with('error', 'Unable to edit.');
+            return redirect()->route('cabinet.banners.show', compact('banner', 'subdomain_userid'))->with('error', 'Unable to edit.');
         }
-        return view('cabinet.banners.edit', compact('banner'));
+        return view('cabinet.banners.edit', compact('banner', 'subdomain_userid'));
     }
 
-    public function edit(EditRequest $request, Banner $banner)
+    public function edit(EditRequest $request, $subdomain_userid, Banner $banner)
     {
         $this->checkAccess($banner);
         try {
@@ -50,20 +50,20 @@ class BannerController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.banners.show', $banner);
+        return redirect()->route('cabinet.banners.show', compact('subdomain_userid','banner'));
     }
 
-    public function fileForm(Banner $banner)
+    public function fileForm($subdomain_userid, Banner $banner)
     {
         $this->checkAccess($banner);
         if (!$banner->canBeChanged()) {
             return redirect()->route('cabinet.banners.show', $banner)->with('error', 'Unable to edit.');
         }
         $formats = Banner::formatsList();
-        return view('cabinet.banners.file', compact('banner', 'formats'));
+        return view('cabinet.banners.file', compact('banner', 'formats', 'subdomain_userid'));
     }
 
-    public function file(FileRequest $request, Banner $banner)
+    public function file(FileRequest $request, $subdomain_userid, Banner $banner)
     {
         $this->checkAccess($banner);
         try {
@@ -72,10 +72,10 @@ class BannerController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.banners.show', $banner);
+        return redirect()->route('cabinet.banners.show', compact('banner', 'subdomain_userid'));
     }
 
-    public function send(Banner $banner)
+    public function send($subdomain_userid, Banner $banner)
     {
         $this->checkAccess($banner);
         try {
@@ -84,10 +84,10 @@ class BannerController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.banners.show', $banner);
+        return redirect()->route('cabinet.banners.show', compact('banner', 'subdomain_userid'));
     }
 
-    public function cancel(Banner $banner)
+    public function cancel($subdomain_userid, Banner $banner)
     {
         $this->checkAccess($banner);
         try {
@@ -96,10 +96,10 @@ class BannerController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.banners.show', $banner);
+        return redirect()->route('cabinet.banners.show', compact('banner', 'subdomain_userid'));
     }
 
-    public function order(Banner $banner)
+    public function order($subdomain_userid, Banner $banner)
     {
         $this->checkAccess($banner);
         try {
@@ -110,10 +110,10 @@ class BannerController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.banners.show', $banner);
+        return redirect()->route('cabinet.banners.show', compact('banner', 'subdomain_userid'));
     }
 
-    public function destroy(Banner $banner)
+    public function destroy($subdomain_userid, Banner $banner)
     {
         $this->checkAccess($banner);
         try {
@@ -122,7 +122,7 @@ class BannerController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('cabinet.banners.index');
+        return redirect()->route('cabinet.banners.index', $subdomain_userid);
     }
 
     private function checkAccess(Banner $banner): void
