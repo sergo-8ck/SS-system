@@ -17,7 +17,8 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "mews/purifier": "^2.1",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "willvincent/laravel-rateable": "~1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.1",

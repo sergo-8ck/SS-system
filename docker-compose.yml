@@ -21,6 +21,7 @@ services:
             - mysql
             - redis
             - elasticsearch
+            - arachnysdocker
         environment:
             - "DB_PORT=3306"
             - "DB_HOST=mysql"
@@ -79,3 +80,7 @@ services:
             - ./storage/docker/elasticsearch:/usr/share/elasticsearch/data
         ports:
             - "9201:9200"
+    arachnysdocker:
+        image: arachnysdocker/athenapdf-service
+        ports:
+            - "8989:8080"

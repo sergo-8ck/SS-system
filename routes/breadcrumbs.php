@@ -12,10 +12,6 @@ use App\Http\Router\AdvertsPath;
 use App\Http\Router\PagePath;
 use DaveJamesMiller\Breadcrumbs\BreadcrumbsGenerator as Crumbs;
 
-Breadcrumbs::register('sub.userid', function (Crumbs $crumbs) {
-  $crumbs->push('Home', route('home'));
-});
-
 Breadcrumbs::register('home', function (Crumbs $crumbs) {
   $crumbs->push('Home', route('home'));
 });
@@ -213,10 +209,13 @@ Breadcrumbs::register('users.create', function (Crumbs $crumbs) {
   $crumbs->push('Create', route('users.create'));
 });
 
-Breadcrumbs::register('users.show', function (Crumbs $crumbs, User $user) {
+
+Breadcrumbs::register('sub.userid', function (Crumbs $crumbs, $subdomain_userid) {
   $crumbs->parent('users.index');
-  $crumbs->push($user->name, route('users.show', $user));
+  $crumbs->push(User::where('id', $subdomain_userid)->first()->name, route('users.index'));
 });
+
+
 
 Breadcrumbs::register('users.edit', function (Crumbs $crumbs, User $user) {
   $crumbs->parent('users.show', $user);

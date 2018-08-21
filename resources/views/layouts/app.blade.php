@@ -12,7 +12,14 @@
     @yield('meta')
 
     <!-- Styles -->
+    {{--<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.css" rel="stylesheet">--}}
     <link href="{{ mix('css/app.css', 'build') }}" rel="stylesheet">
+    <!-- rating -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/css/star-rating.min.css" />
+
+    <!-- rating -->
+
+    <link href="{{ asset('build/css/glyphicons.css') }}" rel="stylesheet">
 </head>
 <body id="app">
     <header>
@@ -103,6 +110,8 @@
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js', 'build') }}"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-star-rating/4.0.2/js/star-rating.min.js"></script>
     @yield('scripts')
 </body>
 </html>

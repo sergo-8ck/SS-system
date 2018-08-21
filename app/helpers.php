@@ -47,7 +47,9 @@ if (! function_exists('page_path')) {
       }
       if(!auth()->check()){
         if(empty($parameters)){
-          return app('url')->route($name, 2, $absolute);
+          $subdomain_userid = explode('.', $_SERVER['HTTP_HOST']);
+          $subdomain_userid = array_shift($subdomain_userid);
+          return app('url')->route($name, $subdomain_userid, $absolute);
         }
         return app('url')->route($name, $parameters, $absolute);
       }

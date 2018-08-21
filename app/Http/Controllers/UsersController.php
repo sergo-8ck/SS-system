@@ -52,9 +52,24 @@ class UsersController extends Controller
   public function show($subdomain_userid)
   {
     $user = User::where('id', $subdomain_userid)->first();
-    return view('users.show', compact('user'));
+    return view('users.show', compact('user', 'subdomain_userid'));
   }
 
+
+  public function postUser(Request $request, $subdomain_userid)
+  {
+    if(!auth()->check()){
+      return redirect()->route('login');
+    }
+    request()->validate(['rate' => 'required']);
+    $user = User::find($request->id);
+    $rating = new \willvincent\Rateable\Rating;
+    $rating->rating = $request->rate;
+    $rating->user_id = auth()->user()->id;
+    $user->ratings()->save($rating);
+    return back();
+
+  }
 
   public function verify(User $user)
   {

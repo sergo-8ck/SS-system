@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Str;
 use Laravel\Passport\HasApiTokens;
+use willvincent\Rateable\Rateable;
+use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
@@ -31,7 +33,7 @@ use Laravel\Passport\HasApiTokens;
  */
 class User extends Authenticatable
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, Rateable;
 
     public const STATUS_WAIT = 'wait';
     public const STATUS_ACTIVE = 'active';
@@ -253,5 +255,10 @@ class User extends Authenticatable
     public function findForPassport($identifier)
     {
         return self::where('email', $identifier)->where('status', self::STATUS_ACTIVE)->first();
+    }
+
+    public function firstRating()
+    {
+
     }
 }
