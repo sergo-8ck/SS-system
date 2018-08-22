@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Entity\Serials;
 use App\Entity\User\User;
 use App\Http\Requests\Admin\Users\CreateRequest;
 use App\Http\Requests\Admin\Users\UpdateRequest;
@@ -52,7 +53,8 @@ class UsersController extends Controller
   public function show($subdomain_userid)
   {
     $user = User::where('id', $subdomain_userid)->first();
-    return view('users.show', compact('user', 'subdomain_userid'));
+    $serial = User::find($user->id)->serial;
+    return view('users.show', compact('user', 'subdomain_userid', 'serial'));
   }
 
 

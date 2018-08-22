@@ -50,6 +50,6 @@ class CreateController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('adverts.show', [$subdomain_userid, $advert]);
+        return redirect()->route('adverts.show', [$advert]);
     }
 }

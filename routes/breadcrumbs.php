@@ -119,14 +119,14 @@ Breadcrumbs::register('cabinet.adverts.create', function (Crumbs $crumbs) {
   $crumbs->push('Create', route('cabinet.adverts.create'));
 });
 
-Breadcrumbs::register('cabinet.adverts.create.region', function (Crumbs $crumbs, Category $category, Region $region = null) {
+Breadcrumbs::register('cabinet.adverts.create.region', function (Crumbs $crumbs, $subdomain_userid, Category $category, Region $region = null) {
   $crumbs->parent('cabinet.adverts.create');
-  $crumbs->push($category->name, route('cabinet.adverts.create.region', [$category, $region]));
+  $crumbs->push($category->name, route('cabinet.adverts.create.region', [$category, $region, $subdomain_userid]));
 });
 
-Breadcrumbs::register('cabinet.adverts.create.advert', function (Crumbs $crumbs, Category $category, Region $region = null) {
-  $crumbs->parent('cabinet.adverts.create.region', $category, $region);
-  $crumbs->push($region ? $region->name : 'All', route('cabinet.adverts.create.advert', [$category, $region]));
+Breadcrumbs::register('cabinet.adverts.create.advert', function (Crumbs $crumbs, $subdomain_userid, Category $category, Region $region = null) {
+  $crumbs->parent('cabinet.adverts.create.region', $subdomain_userid, $category, $region);
+  $crumbs->push($region ? $region->name : 'All', route('cabinet.adverts.create.advert', [$subdomain_userid, $category, $region]));
 });
 
 // Favorites
@@ -399,9 +399,9 @@ Breadcrumbs::register('admin.adverts.adverts.photos', function (Crumbs $crumbs, 
   $crumbs->parent('admin.adverts.adverts.index');
   $crumbs->push('Photo', route('admin.adverts.adverts.photos', [$advert]));
 });
-Breadcrumbs::register('cabinet.adverts.photos', function (Crumbs $crumbs, Advert $advert) {
+Breadcrumbs::register('cabinet.adverts.photos', function (Crumbs $crumbs, $subdomain_userid, Advert $advert) {
   $crumbs->parent('adverts.index');
-  $crumbs->push('Photo', route('cabinet.adverts.photos', [$advert]));
+  $crumbs->push('Photo', route('cabinet.adverts.photos', [$subdomain_userid, $advert]));
 });
 Breadcrumbs::register('cabinet.adverts.edit', function (Crumbs $crumbs, Advert $advert) {
   $crumbs->parent('cabinet.adverts.index');

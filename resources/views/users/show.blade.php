@@ -59,6 +59,9 @@
             </form>
           </div>
         </div>
+        <h3>
+          Серийный номер - {{ $serial->serial }}
+        </h3>
       </div>
     </div>
   </div>
