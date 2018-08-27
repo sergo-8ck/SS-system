@@ -44,7 +44,7 @@ class User extends Authenticatable
   public const ROLE_ADMIN = 'admin';
 
   protected $fillable = [
-    'name', 'last_name', 'email', 'phone', 'password', 'verify_token', 'status', 'role', 'meta'
+    'name', 'last_name', 'email', 'phone', 'password', 'verify_token', 'status', 'role'
   ];
 
   protected $hidden = [
@@ -55,7 +55,6 @@ class User extends Authenticatable
     'phone_verified' => 'boolean',
     'phone_verify_token_expire' => 'datetime',
     'phone_auth' => 'boolean',
-    'meta' => 'array'
   ];
 
   protected $appends = ['skills'];

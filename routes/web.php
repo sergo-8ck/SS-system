@@ -52,6 +52,8 @@ Route::group([
   Route::delete('/show/{advert}/favorites', 'FavoriteController@remove');
 
   Route::get('/{adverts_path?}', 'AdvertController@index')->name('index')->where('adverts_path', '.+');
+
+  Route::post('/show/{advert}/replies', 'RepliesController@store');
 });
 
 Route::group(
@@ -213,3 +215,4 @@ Route::group(
 );
 
 Route::get('/{page_path}', 'PageController@show')->name('page')->where('page_path', '.+');
+
