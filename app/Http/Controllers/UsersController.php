@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
-
   public function index(Request $request)
   {
     $query = User::orderByDesc('id');
@@ -60,7 +59,7 @@ class UsersController extends Controller
 
   public function postUser(Request $request, $subdomain_userid)
   {
-    if(!auth()->check()){
+    if (!auth()->check()) {
       return redirect()->route('login');
     }
     request()->validate(['rate' => 'required']);
@@ -79,4 +78,24 @@ class UsersController extends Controller
 
     return redirect()->route('users.show', $user);
   }
+
+  public function ban(User $user)
+  {
+    $this->register->ban($user->id);
+
+    return redirect()->route('users.show', $user);
+  }
+
+  function pdf($subdomain_userid)
+  {
+    $user = User::where('id', $subdomain_userid)->first();
+    $serial = User::find($user->id)->serial;
+    $pdf = \App::make('dompdf.wrapper');
+    return $pdf->loadView('pdf.serteficate', compact('serial'))->stream();
+  }
+
+
+
+
+
 }

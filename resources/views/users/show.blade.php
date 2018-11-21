@@ -62,6 +62,9 @@
         <h3>
           Серийный номер - {{ $serial->serial }}
         </h3>
+        <div class="col-12 col-sm-6">
+          {!! QrCode::size(200)->margin(2)->generate('https://' . $_SERVER['HTTP_HOST']); !!}
+        </div>
       </div>
     </div>
   </div>

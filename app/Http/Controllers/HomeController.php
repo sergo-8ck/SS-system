@@ -13,6 +13,8 @@ class HomeController extends Controller
 
         $categories = Category::whereIsRoot()->defaultOrder()->getModels();
 
-        return view('home', compact('regions', 'categories'));
+        return view('front/index', compact('regions', 'categories'))
+          ->with('description', 'Lara - Главная страница')
+          ->with('title', 'Lara - Главная страница');
     }
 }

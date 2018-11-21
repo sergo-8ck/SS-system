@@ -13,6 +13,13 @@
             </form>
         @endif
 
+        @if ($user->isActive())
+            <form method="POST" action="{{ route('admin.users.ban', $user) }}" class="mr-1">
+                @csrf
+                <button class="btn btn-success">Ban</button>
+            </form>
+        @endif
+
         <form method="POST" action="{{ route('admin.users.destroy', $user) }}" class="mr-1">
             @csrf
             @method('DELETE')

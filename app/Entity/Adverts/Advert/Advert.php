@@ -47,7 +47,6 @@ class Advert extends Model
 
   protected $casts = [
     'published_at' => 'datetime',
-    'expires_at' => 'datetime',
   ];
 
   public static function statusesList(): array

@@ -14,10 +14,19 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+
+//Route::get('/{page}', function ($page) {
+//  $data = array('description' => 'lara - ' . $page,
+//    'title' => 'lara - ' . $page);
+//  return view('front/'.$page, $data);
+//});
+
 Route::group(['domain' => '{subdomain_userid}.' . env('APP_URL')], function ($subdomain_userid) {
   Route::get('/', ['as' => 'users.show', 'uses' => 'UsersController@show']);
   Route::get('/', ['as' => 'sub.userid', 'uses' => 'UsersController@show']);
   Route::post('/', ['as' => 'sub.userid.post', 'uses' => 'UsersController@postUser']);
+
+  Route::get('/pdf', ['uses' => 'UsersController@pdf']);
 });
 
 Route::group(['domain' => env('APP_URL')], function ($subdomain_userid) {
@@ -67,8 +76,7 @@ Route::group(
   ],
   function ($subdomain_userid) {
 
-      Route::get('/', 'HomeController@index')->name('home');
-
+    Route::get('/', 'HomeController@index')->name('home');
 
     Route::group(['prefix' => 'profile', 'as' => 'profile.'], function ($subdomain_userid) {
       Route::get('/', 'ProfileController@index')->name('home');
@@ -149,6 +157,7 @@ Route::group(
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('users', 'UsersController');
     Route::post('/users/{user}/verify', 'UsersController@verify')->name('users.verify');
+    Route::post('/users/{user}/ban', 'UsersController@ban')->name('users.ban');
 
     Route::resource('regions', 'RegionController');
 
@@ -215,4 +224,5 @@ Route::group(
 );
 
 Route::get('/{page_path}', 'PageController@show')->name('page')->where('page_path', '.+');
+
 

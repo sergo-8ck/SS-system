@@ -130,6 +130,18 @@ class User extends Authenticatable
     ]);
   }
 
+  public function ban(): void
+  {
+    if (!$this->isActive()) {
+      throw new \DomainException('The User has been already band.');
+    }
+
+    $this->update([
+      'status' => self::STATUS_WAIT,
+      'verify_token' => null,
+    ]);
+  }
+
   public function changeRole($role): void
   {
     if (!array_key_exists($role, self::rolesList())) {
@@ -265,7 +277,8 @@ class User extends Authenticatable
 
   }
 
-  public function getSkillsAttribute() {
+  public function getSkillsAttribute()
+  {
     return array_get($this->meta, 'skills', []);
   }
 
