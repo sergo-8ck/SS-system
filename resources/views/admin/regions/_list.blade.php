@@ -1,7 +1,7 @@
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
-        <th>Name</th>
+        <th>Название</th>
         <th>Slug</th>
     </tr>
     </thead>

@@ -8,7 +8,7 @@
             <form method="POST" action="{{ route('cabinet.tickets.destroy', [$subdomain_userid, $ticket]) }}" class="mr-1">
                 @csrf
                 @method('DELETE')
-                <button class="btn btn-danger">Delete</button>
+                <button class="btn btn-danger">Удалить</button>
             </form>
         @endif
     </div>
@@ -22,22 +22,22 @@
                     <td>{{ $ticket->id }}</td>
                 </tr>
                 <tr>
-                    <th>Created</th>
+                    <th>Создан</th>
                     <td>{{ $ticket->created_at }}</td>
                 </tr>
                 <tr>
-                    <th>Updated</th>
+                    <th>Обновлен</th>
                     <td>{{ $ticket->updated_at }}</td>
                 </tr>
                 <tr>
-                    <th>Status</th>
+                    <th>Статус</th>
                     <td>
                         @if ($ticket->isOpen())
-                            <span class="badge badge-danger">Open</span>
+                            <span class="badge badge-danger">Открыт</span>
                         @elseif ($ticket->isApproved())
-                            <span class="badge badge-primary">Active</span>
+                            <span class="badge badge-primary">Активный</span>
                         @elseif ($ticket->isClosed())
-                            <span class="badge badge-secondary">Closed</span>
+                            <span class="badge badge-secondary">Закрыт</span>
                         @endif
                     </td>
                 </tr>
@@ -48,9 +48,9 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>User</th>
-                        <th>Status</th>
+                        <th>Дата</th>
+                        <th>Пользователь</th>
+                        <th>Статус</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,11 +60,11 @@
                         <td>{{ $status->user->name }}</td>
                         <td>
                             @if ($status->isOpen())
-                                <span class="badge badge-danger">Open</span>
+                                <span class="badge badge-danger">Откыт</span>
                             @elseif ($status->isApproved())
-                                <span class="badge badge-primary">Approved</span>
+                                <span class="badge badge-primary">Одобрен</span>
                             @elseif ($status->isClosed())
-                                <span class="badge badge-secondary">Closed</span>
+                                <span class="badge badge-secondary">Закрыт</span>
                             @endif
                         </td>
                     </tr>
@@ -106,7 +106,7 @@
             </div>
 
             <div class="form-group mb-0">
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary">Отправить</button>
             </div>
         </form>
     @endif

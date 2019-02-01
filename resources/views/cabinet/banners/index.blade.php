@@ -3,17 +3,18 @@
 @section('content')
     @include('cabinet.banners._nav')
 
-    <p><a href="{{ route('cabinet.banners.create') }}" class="btn btn-success">Add Banner</a></p>
+    <p><a href="{{ route('cabinet.banners.create') }}" class="btn btn-success">Добавить
+            баннер</a></p>
 
     <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Region</th>
-            <th>Category</th>
-            <th>Published</th>
-            <th>Status</th>
+            <th>Название</th>
+            <th>Регион</th>
+            <th>Категория</th>
+            <th>Опубликован</th>
+            <th>Статус</th>
         </tr>
         </thead>
         <tbody>
@@ -31,7 +32,7 @@
                 <td>{{ $banner->published_at }}</td>
                 <td>
                     @if ($banner->isDraft())
-                        <span class="badge badge-secondary">Draft</span>
+                        <span class="badge badge-secondary">Черновик</span>
                     @elseif ($banner->isOnModeration())
                         <span class="badge badge-primary">Moderation</span>
                     @elseif ($banner->isModerated())

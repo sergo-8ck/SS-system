@@ -8,7 +8,7 @@
         <form method="POST" action="{{ route('admin.adverts.categories.attributes.destroy', [$category, $attribute]) }}" class="mr-1">
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-danger">Удалить</button>
         </form>
     </div>
 
@@ -18,7 +18,7 @@
             <th>ID</th><td>{{ $category->id }}</td>
         </tr>
         <tr>
-            <th>Name</th><td>{{ $category->name }}</td>
+            <th>Название</th><td>{{ $category->name }}</td>
         </tr>
         <tr>
             <th>Slug</th><td>{{ $category->slug }}</td>

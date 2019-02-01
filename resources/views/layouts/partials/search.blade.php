@@ -6,7 +6,8 @@
                     <div class="row">
                         <div class="col-md-11">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="text" value="{{ request('text') }}" placeholder="Search for...">
+                                <input type="text" class="form-control" name="text" value="{{
+                                request('text') }}" placeholder="Искать...">
                             </div>
                         </div>
                         <div class="col-md-1">
@@ -53,7 +54,8 @@
                 </form>
             </div>
             <div class="col-md-3" style="text-align: right">
-                <p><a href="{{ route('cabinet.adverts.create') }}" class="btn btn-success"><span class="fa fa-plus"></span> Add New Advertisement</a></p>
+                <p><a href="{{ route('cabinet.adverts.create') }}" class="btn btn-success"><span
+                            class="fa fa-plus"></span> Добавить свой продукт</a></p>
             </div>
         </div>
     </div>

@@ -26,7 +26,7 @@
         <nav class="navbar navbar-expand-md navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ env('APP_URL') }}">
-                    Adverts
+                    Сайт
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
                         @if ($morePages = array_slice($menuPages, 3))
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    More... <span class="caret"></span>
+                                    Больше... <span class="caret"></span>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @foreach ($morePages as $page)
@@ -93,7 +93,7 @@
 
     <main class="app-content py-3">
         <div class="container">
-            @section('breadcrumbs', Breadcrumbs::render())
+{{--            @section('breadcrumbs', Breadcrumbs::render())--}}
             @yield('breadcrumbs')
             @include('layouts.partials.flash')
             @yield('content')

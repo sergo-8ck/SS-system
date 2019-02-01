@@ -6,7 +6,7 @@
 
     <div class="card card-default mb-3">
         <div class="card-header">
-            All Categories
+            Все категории
         </div>
         <div class="card-body pb-0" style="color: #aaa">
             <div class="row">

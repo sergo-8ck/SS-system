@@ -3,16 +3,16 @@
 @section('content')
     @include('cabinet.tickets._nav')
 
-    <p><a href="{{ route('cabinet.tickets.create') }}" class="btn btn-success">Add Ticket</a></p>
+    <p><a href="{{ route('cabinet.tickets.create') }}" class="btn btn-success">Создать тикет</a></p>
 
     <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Created</th>
-            <th>Updated</th>
-            <th>Subject</th>
-            <th>Status</th>
+            <th>Создан</th>
+            <th>Обновлен</th>
+            <th>Тема</th>
+            <th>Статус</th>
         </tr>
         </thead>
         <tbody>
@@ -25,11 +25,11 @@
                 <td><a href="{{ route('cabinet.tickets.show', [auth()->user()->id, $ticket]) }}" target="_blank">{{ $ticket->subject }}</a></td>
                 <td>
                     @if ($ticket->isOpen())
-                        <span class="badge badge-danger">Open</span>
+                        <span class="badge badge-danger">Открыт</span>
                     @elseif ($ticket->isApproved())
-                        <span class="badge badge-primary">Approved</span>
+                        <span class="badge badge-primary">Одобрено</span>
                     @elseif ($ticket->isClosed())
-                        <span class="badge badge-secondary">Closed</span>
+                        <span class="badge badge-secondary">Закрыто</span>
                     @endif
                 </td>
             </tr>

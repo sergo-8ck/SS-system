@@ -3,10 +3,10 @@
 @section('content')
     @include('admin.users._nav')
 
-    <p><a href="{{ route('admin.users.create') }}" class="btn btn-success">Add User</a></p>
+    <p><a href="{{ route('admin.users.create') }}" class="btn btn-success">Добавить пользователя</a></p>
 
     <div class="card mb-3">
-        <div class="card-header">Filter</div>
+        <div class="card-header">Фильтр</div>
         <div class="card-body">
             <form action="?" method="GET">
                 <div class="row">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label for="name" class="col-form-label">Name</label>
+                            <label for="name" class="col-form-label">Название</label>
                             <input id="name" class="form-control" name="name" value="{{ request('name') }}">
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label for="status" class="col-form-label">Status</label>
+                            <label for="status" class="col-form-label">Статус</label>
                             <select id="status" class="form-control" name="status">
                                 <option value=""></option>
                                 @foreach ($statuses as $value => $label)
@@ -41,7 +41,7 @@
                     </div>
                     <div class="col-sm-2">
                         <div class="form-group">
-                            <label for="role" class="col-form-label">Role</label>
+                            <label for="role" class="col-form-label">Роль</label>
                             <select id="role" class="form-control" name="role">
                                 <option value=""></option>
                                 @foreach ($roles as $value => $label)
@@ -65,10 +65,10 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
+            <th>Имя</th>
             <th>Email</th>
-            <th>Status</th>
-            <th>Role</th>
+            <th>Статус</th>
+            <th>Роль</th>
         </tr>
         </thead>
         <tbody>
@@ -80,17 +80,17 @@
                 <td>{{ $user->email }}</td>
                 <td>
                     @if ($user->isWait())
-                        <span class="badge badge-secondary">Waiting</span>
+                        <span class="badge badge-secondary">Ожидает</span>
                     @endif
                     @if ($user->isActive())
-                        <span class="badge badge-primary">Active</span>
+                        <span class="badge badge-primary">Активный</span>
                     @endif
                 </td>
                 <td>
                     @if ($user->isAdmin())
-                        <span class="badge badge-danger">Admin</span>
+                        <span class="badge badge-danger">Администратор</span>
                     @else
-                        <span class="badge badge-secondary">User</span>
+                        <span class="badge badge-secondary">Пользователь</span>
                     @endif
                 </td>
             </tr>

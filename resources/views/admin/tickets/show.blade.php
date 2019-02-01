@@ -6,33 +6,33 @@
 
     <div class="d-flex flex-row mb-3">
 
-        <a href="{{ route('admin.tickets.edit', $ticket) }}" class="btn btn-primary mr-1">Edit</a>
+        <a href="{{ route('admin.tickets.edit', $ticket) }}" class="btn btn-primary mr-1">Редактировать</a>
 
         @if ($ticket->isOpen())
             <form method="POST" action="{{ route('admin.tickets.approve', $ticket) }}" class="mr-1">
                 @csrf
-                <button class="btn btn-success">Approve</button>
+                <button class="btn btn-success">Одобрить</button>
             </form>
         @endif
 
         @if (!$ticket->isClosed())
             <form method="POST" action="{{ route('admin.tickets.close', $ticket) }}" class="mr-1">
                 @csrf
-                <button class="btn btn-success">Close</button>
+                <button class="btn btn-success">Закрыть</button>
             </form>
         @endif
 
         @if ($ticket->isClosed())
             <form method="POST" action="{{ route('admin.tickets.reopen', $ticket) }}" class="mr-1">
                 @csrf
-                <button class="btn btn-success">Reopen</button>
+                <button class="btn btn-success">Возобновить</button>
             </form>
         @endif
 
         <form method="POST" action="{{ route('admin.tickets.destroy', $ticket) }}" class="mr-1">
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-danger">Удалить</button>
         </form>
     </div>
 
@@ -45,26 +45,26 @@
                     <td>{{ $ticket->id }}</td>
                 </tr>
                 <tr>
-                    <th>Created</th>
+                    <th>Создан</th>
                     <td>{{ $ticket->created_at }}</td>
                 </tr>
                 <tr>
-                    <th>Updated</th>
+                    <th>Обновлен</th>
                     <td>{{ $ticket->updated_at }}</td>
                 </tr>
                 <tr>
-                    <th>User</th>
+                    <th>Пользователь</th>
                     <td><a href="{{ route('admin.users.show', $ticket->user) }}" target="_blank">{{ $ticket->user->name }}</a></td>
                 </tr>
                 <tr>
-                    <th>Status</th>
+                    <th>Статус</th>
                     <td>
                         @if ($ticket->isOpen())
-                            <span class="badge badge-danger">Open</span>
+                            <span class="badge badge-danger">Открыт</span>
                         @elseif ($ticket->isApproved())
-                            <span class="badge badge-primary">Approved</span>
+                            <span class="badge badge-primary">Одобрен</span>
                         @elseif ($ticket->isClosed())
-                            <span class="badge badge-secondary">Closed</span>
+                            <span class="badge badge-secondary">Закрыт</span>
                         @endif
                     </td>
                 </tr>
@@ -75,9 +75,9 @@
             <table class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Date</th>
-                        <th>User</th>
-                        <th>Status</th>
+                        <th>Дата</th>
+                        <th>Пользователь</th>
+                        <th>Статус</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,11 +87,11 @@
                         <td>{{ $status->user->name }}</td>
                         <td>
                             @if ($status->isOpen())
-                                <span class="badge badge-danger">Open</span>
+                                <span class="badge badge-danger">Открыт</span>
                             @elseif ($status->isApproved())
-                                <span class="badge badge-primary">Approved</span>
+                                <span class="badge badge-primary">Одобрен</span>
                             @elseif ($status->isClosed())
-                                <span class="badge badge-secondary">Closed</span>
+                                <span class="badge badge-secondary">Закрыт</span>
                             @endif
                         </td>
                     </tr>
@@ -133,7 +133,7 @@
             </div>
 
             <div class="form-group mb-0">
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary">Отправить сообщение</button>
             </div>
         </form>
     @endif

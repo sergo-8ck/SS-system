@@ -10,21 +10,21 @@
         @if ($banner->isOnModeration())
             <form method="POST" action="{{ route('admin.banners.moderate', $banner) }}" class="mr-1">
                 @csrf
-                <button class="btn btn-success">Moderate</button>
+                <button class="btn btn-success">Модерация</button>
             </form>
         @endif
 
         @if ($banner->isOrdered())
             <form method="POST" action="{{ route('admin.banners.pay', $banner) }}" class="mr-1">
                 @csrf
-                <button class="btn btn-success">Mark as Paid</button>
+                <button class="btn btn-success">Отметить как оплаченный</button>
             </form>
         @endif
 
         <form method="POST" action="{{ route('admin.banners.destroy', $banner) }}" class="mr-1">
             @csrf
             @method('DELETE')
-            <button class="btn btn-danger">Delete</button>
+            <button class="btn btn-danger">Удалить</button>
         </form>
     </div>
 
@@ -35,11 +35,11 @@
             <td>{{ $banner->id }}</td>
         </tr>
         <tr>
-            <th>Name</th>
+            <th>Название</th>
             <td>{{ $banner->name }}</td>
         </tr>
         <tr>
-            <th>Region</th>
+            <th>Регион</th>
             <td>
                 @if ($banner->region)
                     {{ $banner->region->name }}
@@ -47,29 +47,29 @@
             </td>
         </tr>
         <tr>
-            <th>Category</th>
+            <th>Категория</th>
             <td>{{ $banner->category->name }}</td>
         </tr>
         <tr>
-            <th>Status</th>
+            <th>Статус</th>
             <td>
                 @if ($banner->isDraft())
-                    <span class="badge badge-secondary">Draft</span>
+                    <span class="badge badge-secondary">Черновик</span>
                 @elseif ($banner->isOnModeration())
-                    <span class="badge badge-primary">Moderation</span>
+                    <span class="badge badge-primary">Модерация</span>
                 @elseif ($banner->isModerated())
-                    <span class="badge badge-success">Ready to Payment</span>
+                    <span class="badge badge-success">Готов к оплате</span>
                 @elseif ($banner->isOrdered())
-                    <span class="badge badge-warning">Waiting for Payment</span>
+                    <span class="badge badge-warning">Ожидается платеж</span>
                 @elseif ($banner->isActive())
-                    <span class="badge badge-primary">Active</span>
+                    <span class="badge badge-primary">Активный</span>
                 @elseif ($banner->isClosed())
-                    <span class="badge badge-secondary">Closed</span>
+                    <span class="badge badge-secondary">Закрыто</span>
                 @endif
             </td>
         </tr>
         <tr>
-            <th>Publish Date</th>
+            <th>Дата публикации</th>
             <td>{{ $banner->published_at }}</td>
         </tr>
         </tbody>
