@@ -15,7 +15,32 @@
             <h6>E-mail адрес:</h6>
             <p>ATG-Service@yandex.ru</p>
           </li>
-          <li class="quotes"><a href="{{route('login', '1')}}">Авторизация</a></li>
+          @guest
+            <li class="quotes"><a href="{{route('login', '1')}}">Авторизация</a></li>
+          @else
+            <li class="nav-item dropdown">
+              <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ Auth::user()->name }} <span class="caret"></span>
+              </a>
+
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                @can ('admin-panel')
+                  <a class="dropdown-item" href="{{ route('admin.home') }}">Админка</a>
+                @endcan
+                <a class="dropdown-item" href="{{ route('cabinet.home') }}">Кабинет</a>
+                <a class="dropdown-item" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">
+                  Выйти
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
+              </div>
+            </li>
+          @endguest
+
         </ul>
       </div>
     </div>
