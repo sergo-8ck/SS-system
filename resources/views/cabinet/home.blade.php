@@ -15,8 +15,6 @@
         }}">{{config('cabinet.menu.messages')}}</a></li>
     </ul>
 
-
-
     @can('admin-panel')
 
     @else
