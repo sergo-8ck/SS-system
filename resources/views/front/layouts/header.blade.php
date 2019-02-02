@@ -15,7 +15,7 @@
             <h6>E-mail адрес:</h6>
             <p>ATG-Service@yandex.ru</p>
           </li>
-          <li class="quotes"><a href="#">Авторизация</a></li>
+          <li class="quotes"><a href="{{route('login', '1')}}">Авторизация</a></li>
         </ul>
       </div>
     </div>

@@ -3,7 +3,7 @@
 @section('content')
     @include('cabinet.adverts._nav')
 
-    <p>Choose category:</p>
+    <p>Выберите категорию:</p>
 
     @include('cabinet.adverts.create._categories', ['categories' => $categories])
 

@@ -4,7 +4,7 @@
 
   @if ($advert->isDraft())
     <div class="alert alert-danger">
-      It is a draft.
+      Это черновик.
     </div>
     @if ($advert->reject_reason)
       <div class="alert alert-danger">
@@ -15,51 +15,51 @@
 
   @can ('manage-adverts')
     <div class="d-flex flex-row mb-3">
-      <a href="{{ route('admin.adverts.adverts.edit', $advert) }}" class="btn btn-primary mr-1">Edit</a>
-      <a href="{{ route('admin.adverts.adverts.photos', $advert) }}" class="btn btn-primary mr-1">Photos</a>
+      <a href="{{ route('admin.adverts.adverts.edit', $advert) }}" class="btn btn-primary mr-1">Редактировать</a>
+      <a href="{{ route('admin.adverts.adverts.photos', $advert) }}" class="btn btn-primary mr-1">Фото</a>
 
       @if ($advert->isOnModeration())
         <form method="POST" action="{{ route('admin.adverts.adverts.moderate', $advert) }}" class="mr-1">
           @csrf
-          <button class="btn btn-success">Moderate</button>
+          <button class="btn btn-success">Модерация</button>
         </form>
       @endif
 
       @if ($advert->isOnModeration() || $advert->isActive())
-        <a href="{{ route('admin.adverts.adverts.reject', $advert) }}" class="btn btn-danger mr-1">Reject</a>
+        <a href="{{ route('admin.adverts.adverts.reject', $advert) }}" class="btn btn-danger mr-1">Отклонить</a>
       @endif
 
       <form method="POST" action="{{ route('admin.adverts.adverts.destroy', $advert) }}" class="mr-1">
         @csrf
         @method('DELETE')
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger">Удалить</button>
       </form>
     </div>
   @endcan
 
   @can ('manage-own-advert', $advert)
     <div class="d-flex flex-row mb-3">
-      <a href="{{ route('cabinet.adverts.edit', [auth()->user()->id, $advert]) }}" class="btn btn-primary mr-1">Edit</a>
+      <a href="{{ route('cabinet.adverts.edit', [auth()->user()->id, $advert]) }}" class="btn btn-primary mr-1">Редактировать</a>
       <a href="{{ route('cabinet.adverts.photos', [auth()->user()->id, $advert]) }}"
-         class="btn btn-primary mr-1">Photos</a>
+         class="btn btn-primary mr-1">Фото</a>
 
       @if ($advert->isDraft())
         <form method="POST" action="{{ route('cabinet.adverts.send', [auth()->user()->id, $advert]) }}" class="mr-1">
           @csrf
-          <button class="btn btn-success">Publish</button>
+          <button class="btn btn-success">Опубликовать</button>
         </form>
       @endif
       @if ($advert->isActive())
         <form method="POST" action="{{ route('cabinet.adverts.close', [auth()->user()->id, $advert]) }}" class="mr-1">
           @csrf
-          <button class="btn btn-success">Close</button>
+          <button class="btn btn-success">Закрыть</button>
         </form>
       @endif
 
       <form method="POST" action="{{ route('cabinet.adverts.destroy', [auth()->user()->id, $advert]) }}" class="mr-1">
         @csrf
         @method('DELETE')
-        <button class="btn btn-danger">Delete</button>
+        <button class="btn btn-danger">Удалить</button>
       </form>
     </div>
   @endcan
@@ -71,10 +71,10 @@
       <h1 style="margin-bottom: 10px">{{ $advert->title  }}</h1>
       <p>
         @if ($advert->expires_at)
-          Date: {{ $advert->published_at }} &nbsp;
+          Дата публикации: {{ $advert->published_at }} &nbsp;
         @endif
         @if ($advert->expires_at)
-          Expires: {{ $advert->expires_at }}
+          Срок действия: {{ $advert->expires_at }}
         @endif
       </p>
 
@@ -105,28 +105,28 @@
         </tbody>
       </table>
 
-      <p>Address: {{ $advert->address }}</p>
+      <p>Адрес: {{ $advert->address }}</p>
 
       <div style="margin: 20px 0; border: 1px solid #ddd">
         <div id="map" style="width: 100%; height: 250px"></div>
       </div>
 
-      <p style="margin-bottom: 20px">Seller: {{ $advert->user->name }}</p>
+      <p style="margin-bottom: 20px">Продавец: {{ $advert->user->name }}</p>
 
       <div class="d-flex flex-row mb-3">
-        <span class="btn btn-success mr-1"><span class="fa fa-envelope"></span> Send Message</span>
+        <span class="btn btn-success mr-1"><span class="fa fa-envelope"></span> Отправить сообщение</span>
         <span class="btn btn-primary phone-button mr-1" data-source="{{ route('adverts.phone', $advert) }}"><span
-              class="fa fa-phone"></span> <span class="number">Show Phone Number</span></span>
+              class="fa fa-phone"></span> <span class="number">Показать номер телефона</span></span>
         @if ($user && $user->hasInFavorites($advert->id))
           <form method="POST" action="{{ route('adverts.favorites', $advert) }}" class="mr-1">
             @csrf
             @method('DELETE')
-            <button class="btn btn-secondary"><span class="fa fa-star"></span> Remove from Favorites</button>
+            <button class="btn btn-secondary"><span class="fa fa-star"></span> Удалить из избранного</button>
           </form>
         @else
           <form method="POST" action="{{ route('adverts.favorites', $advert) }}" class="mr-1">
             @csrf
-            <button class="btn btn-danger"><span class="fa fa-star"></span> Add to Favorites</button>
+            <button class="btn btn-danger"><span class="fa fa-star"></span> Добавить в избранное</button>
           </form>
         @endif
       </div>
@@ -156,12 +156,12 @@
           </div>
         </div>
       @else
-        <p class="text-center">Please <a href="{{ route('login') }}">sign in</a> to participate in this discussion.</p>
+        <p class="text-center">Пожалуйста <a href="{{ route('login') }}">войдите в систему</a> чтобы написать.</p>
       @endif
 
       <hr/>
 
-      <div class="h3">Similar adverts</div>
+      <div class="h3">Похожие</div>
 
       <div class="row">
         <div class="col-sm-6 col-md-4">
@@ -170,7 +170,7 @@
                  src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
                  alt=""/>
             <div class="card-body">
-              <div class="card-title h4 mt-0" style="margin: 10px 0"><a href="#">The First Thing</a></div>
+              <div class="card-title h4 mt-0" style="margin: 10px 0"><a href="#">Во первых</a></div>
               <p class="card-text" style="color: #666">Cras justo odio, dapibus ac facilisis in, egestas eget quam.
                 Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id
                 elit.</p>
@@ -183,7 +183,7 @@
                  src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
                  alt=""/>
             <div class="card-body">
-              <div class="card-title h4 mt-0" style="margin: 10px 0"><a href="#">The First Thing</a></div>
+              <div class="card-title h4 mt-0" style="margin: 10px 0"><a href="#">Во вторых</a></div>
               <p class="card-text" style="color: #666">Cras justo odio, dapibus ac facilisis in, egestas eget quam.
                 Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id
                 elit.</p>
@@ -196,7 +196,7 @@
                  src="https://images.pexels.com/photos/297933/pexels-photo-297933.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb"
                  alt=""/>
             <div class="card-body">
-              <div class="card-title h4 mt-0" style="margin: 10px 0"><a href="#">The First Thing</a></div>
+              <div class="card-title h4 mt-0" style="margin: 10px 0"><a href="#">В третьих</a></div>
               <p class="card-text" style="color: #666">Cras justo odio, dapibus ac facilisis in, egestas eget quam.
                 Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id
                 elit.</p>
