@@ -63,7 +63,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('manage-own-subdomain', function (User $user) {
-            return \Request::route('subdomain_userid') == $user->id;
+            return $user->isAdmin() || $user->isModerator() || \Request::route('subdomain_userid') == $user->id;
         });
 
         Gate::define('manage-own-advert', function (User $user, Advert $advert) {
