@@ -14,4 +14,6 @@
         <li class="nav-item"><a class="nav-link" href="{{ route('cabinet.tickets.index')
         }}">{{config('cabinet.menu.messages')}}</a></li>
     </ul>
+
+    <ul><li><a href="{{route('certificate-pdf')}}">Сертификат</a></li></ul>
 @endsection

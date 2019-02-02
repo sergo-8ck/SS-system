@@ -53,7 +53,7 @@
                         <div class="form-group">
                             <label class="col-form-label">&nbsp;</label><br />
                             <button type="submit" class="btn btn-primary">Поиск</button>
-                            <a href="?" class="btn btn-outline-secondary">Сбросить</a>
+                            <a href="?" class="btn btn-outline-secondary">Сброс</a>
                         </div>
                     </div>
                 </div>

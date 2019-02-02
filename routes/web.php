@@ -26,7 +26,7 @@ Route::group(['domain' => '{subdomain_userid}.' . env('APP_URL')], function ($su
   Route::get('/', ['as' => 'sub.userid', 'uses' => 'UsersController@show']);
   Route::post('/', ['as' => 'sub.userid.post', 'uses' => 'UsersController@postUser']);
 
-  Route::get('/pdf', ['uses' => 'UsersController@pdf']);
+  Route::get('/pdf', ['uses' => 'UsersController@pdf'])->name('certificate-pdf')->middleware(['auth', 'can:manage-own-subdomain']);
 });
 
 Route::group(['domain' => env('APP_URL')], function ($subdomain_userid) {
@@ -34,9 +34,6 @@ Route::group(['domain' => env('APP_URL')], function ($subdomain_userid) {
   Route::get('/users', 'UsersController@index')->name('users.index');
   Auth::routes();
 });
-
-
-
 
 Route::get('/login/phone', 'Auth\LoginController@phone')->name('login.phone');
 Route::post('/login/phone', 'Auth\LoginController@verify');
