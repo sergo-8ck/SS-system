@@ -15,5 +15,11 @@
         }}">{{config('cabinet.menu.messages')}}</a></li>
     </ul>
 
-    <ul><li><a href="{{route('certificate-pdf')}}">Сертификат</a></li></ul>
+
+
+    @can('admin-panel')
+
+    @else
+        <ul><li><a href="{{route('certificate-pdf')}}">Сертификат</a></li></ul>
+    @endcan
 @endsection
