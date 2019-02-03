@@ -54,6 +54,8 @@
             <td>
                 @if ($user->isAdmin())
                     <span class="badge badge-danger">Администратор</span>
+                @elseif($user->isModerator())
+                    <span class="badge badge-success">Модератор</span>
                 @else
                     <span class="badge badge-secondary">Пользователь</span>
                 @endif

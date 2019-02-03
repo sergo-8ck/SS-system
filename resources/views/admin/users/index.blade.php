@@ -83,8 +83,10 @@
                     <td>Админ</td>
                 @elseif($user->isModerator())
                     <td>Модератор</td>
-                @else
+                @elseif($user->isActive())
                     <td><a href="{{ route('certificate-pdf', $user) }}">{{ $user->serial->serial }}</a></td>
+                @else
+                    <td>-</td>
                 @endif
                 <td>
                     @if ($user->isWait())
