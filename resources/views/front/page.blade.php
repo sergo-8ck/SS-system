@@ -58,7 +58,7 @@
                             <li><a href="#">Главная</a></li>
                             @foreach ($menuPages as $page)
                                 <li><a href="{{ route('page', page_path($page)) }}">{{ $page->getMenuTitle() }}</a>
-                                    @if ($page->children)
+                                    @if (!$page->children->isEmpty())
                                         <ul>
                                             @foreach ($page->children as $child)
                                                 <li><a href="{{ route('page', page_path($child)) }}">{{ $child->title }}</a></li>
