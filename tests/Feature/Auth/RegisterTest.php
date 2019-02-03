@@ -45,7 +45,7 @@ class RegisterTest extends TestCase
         $response
             ->assertStatus(302)
             ->assertRedirect('/login')
-            ->assertSessionHas('success', 'Письмо с подтверждением отправлен на вашу почту.');
+            ->assertSessionHas('success', 'Письмо с подтверждением отправлено на вашу почту.');
     }
 
     public function testVerifyIncorrect(): void

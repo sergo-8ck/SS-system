@@ -27,7 +27,7 @@ class RegisterController extends Controller
         $this->service->register($request);
 
         return redirect()->route('login')
-            ->with('success', 'Письмо с подтверждением отправлен на вашу почту.');
+            ->with('success', 'Письмо с подтверждением отправлено на вашу почту.');
     }
 
     public function verify($token)
