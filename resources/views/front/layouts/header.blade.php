@@ -26,8 +26,9 @@
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 @can ('admin-panel')
                   <a class="dropdown-item" href="{{ route('admin.home') }}">Админка</a>
-                @endcan
+                @else
                 <a class="dropdown-item" href="{{ route('cabinet.home') }}">Кабинет</a>
+                @endcan
                 <a class="dropdown-item" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                        document.getElementById('logout-form').submit();">

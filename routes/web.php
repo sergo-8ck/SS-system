@@ -68,7 +68,7 @@ Route::group(
     'prefix' => 'cabinet',
     'as' => 'cabinet.',
     'namespace' => 'Cabinet',
-    'middleware' => ['auth'],
+    'middleware' => ['auth','redirect_admin_panel'],
 
   ],
   function ($subdomain_userid) {

@@ -247,7 +247,8 @@ class User extends Authenticatable
 
   public function hasFilledProfile(): bool
   {
-    return !empty($this->name) && !empty($this->last_name) && $this->isPhoneVerified();
+//    return !empty($this->name) && !empty($this->last_name) && $this->isPhoneVerified();
+      return true;
   }
 
   public function favorites()
