@@ -70,15 +70,15 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('manage-own-advert', function (User $user, Advert $advert) {
-            return $advert->user_id === $user->id;
+            return $advert->user_id == $user->id;
         });
 
         Gate::define('manage-own-banner', function (User $user, Banner $banner) {
-            return $banner->user_id === $user->id;
+            return $banner->user_id == $user->id;
         });
 
         Gate::define('manage-own-ticket', function (User $user, Ticket $ticket) {
-            return $ticket->user_id === $user->id;
+            return $ticket->user_id == $user->id;
         });
     }
 }
