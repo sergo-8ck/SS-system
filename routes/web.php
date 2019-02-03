@@ -151,7 +151,7 @@ Route::group(
   function () {
     Route::post('/ajax/upload/image', 'UploadController@image')->name('ajax.upload.image');
 
-    Route::get('/', 'Adverts\AdvertController@index')->name('home');
+    Route::get('/', 'UsersController@index')->name('home');
     Route::resource('users', 'UsersController');
     Route::post('/users/{user}/verify', 'UsersController@verify')->name('users.verify');
     Route::post('/users/{user}/ban', 'UsersController@ban')->name('users.ban');
