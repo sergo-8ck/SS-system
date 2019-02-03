@@ -51,7 +51,7 @@
   <div class="bottom-footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-12"><p>&copy; {{ date('Y') }} - {{env('APP_NAME')}}</p></div>
+        <div class="col-md-6 col-12"><p>&copy; {{ date('Y') }} - {{ config('app.name') }}</p></div>
         <div class="col-md-6 col-12">
           <ul>
             @foreach (array_slice($menuPages, 0, 3) as $page)
