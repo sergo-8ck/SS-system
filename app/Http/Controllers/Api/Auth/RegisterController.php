@@ -32,7 +32,7 @@ class RegisterController extends Controller
         $this->service->register($request);
 
         return response()->json([
-            'success' => 'Check your email and click on the link to verify.'
+            'success' => 'Письмо с подтверждением отправлен на вашу почту.'
         ], Response::HTTP_CREATED);
     }
 }

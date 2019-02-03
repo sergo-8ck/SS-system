@@ -45,7 +45,7 @@ class RegisterTest extends TestCase
         $response
             ->assertStatus(302)
             ->assertRedirect('/login')
-            ->assertSessionHas('success', 'Check your email and click on the link to verify.');
+            ->assertSessionHas('success', 'Письмо с подтверждением отправлен на вашу почту.');
     }
 
     public function testVerifyIncorrect(): void
@@ -55,7 +55,7 @@ class RegisterTest extends TestCase
         $response
             ->assertStatus(302)
             ->assertRedirect('/login')
-            ->assertSessionHas('error', 'Sorry your link cannot be identified.');
+            ->assertSessionHas('error', 'Извините, ваша ссылка не может быть идентифицирована.');
     }
 
     public function testVerify(): void
@@ -70,6 +70,6 @@ class RegisterTest extends TestCase
         $response
             ->assertStatus(302)
             ->assertRedirect('/login')
-            ->assertSessionHas('success', 'Your e-mail is verified. You can now login.');
+            ->assertSessionHas('success', 'Ваш адрес электронной почты подтвержден. Теперь вы можете войти.');
     }
 }

@@ -27,19 +27,19 @@ class RegisterController extends Controller
         $this->service->register($request);
 
         return redirect()->route('login')
-            ->with('success', 'Check your email and click on the link to verify.');
+            ->with('success', 'Письмо с подтверждением отправлен на вашу почту.');
     }
 
     public function verify($token)
     {
         if (!$user = User::where('verify_token', $token)->first()) {
             return redirect()->route('login')
-                ->with('error', 'Sorry your link cannot be identified.');
+                ->with('error', 'Извините, ваша ссылка не может быть идентифицирована.');
         }
 
         try {
             $this->service->verify($user->id);
-            return redirect()->route('login')->with('success', 'Your e-mail is verified. You can now login.');
+            return redirect()->route('login')->with('success', 'Ваш адрес электронной почты подтвержден. Теперь вы можете войти.');
         } catch (\DomainException $e) {
             return redirect()->route('login')->with('error', $e->getMessage());
         }
