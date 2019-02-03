@@ -69,53 +69,6 @@
   </div>
 </div>
 
-
-
-<div class="core-values">
-  <div class="container">
-    <div class="theme-title-one">
-      <h2>ГЛАВНЫЕ СОБЫТИЯ</h2>
-    </div>
-    <div class="wrapper">
-      <div class="core-value-slider">
-        <div class="item">
-          <div class="single-value-block">
-            <div class="image-box">
-              <img src="images/home/17.jpg" alt="">
-            </div> <!-- /.image-box -->
-            <div class="text">
-              <h5><a href="#">Оспаривающий персонал</a></h5>
-              <p>Влюбленная лодка скоро будет делать другие пустые странные инструменты.</p>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="single-value-block">
-            <div class="image-box">
-              <img src="images/home/18.jpg" alt="">
-            </div>
-            <div class="text">
-              <h5><a href="#">Свойства целостности</a></h5>
-              <p>Влюбленная лодка скоро будет делать другие пустые странные инструменты.</p>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="single-value-block">
-            <div class="image-box">
-              <img src="images/home/19.jpg" alt="">
-            </div>
-            <div class="text">
-              <h5><a href="#">Инновационные решения</a></h5>
-              <p>Влюбленная лодка скоро будет делать другие пустые странные инструменты.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
 <div class="partner-section">
   <div class="container">
     <div class="row">
