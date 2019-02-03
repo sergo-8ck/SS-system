@@ -7,7 +7,7 @@
         @csrf
 
         <div class="form-group">
-            <label for="name" class="col-form-label">Name</label>
+            <label for="name" class="col-form-label">Название</label>
             <input id="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required>
             @if ($errors->has('name'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('name') }}</strong></span>
@@ -15,7 +15,7 @@
         </div>
 
         <div class="form-group">
-            <label for="limit" class="col-form-label">Views</label>
+            <label for="limit" class="col-form-label">Представление</label>
             <input id="limit" type="number" class="form-control{{ $errors->has('limit') ? ' is-invalid' : '' }}" name="limit" value="{{ old('limit') }}" required>
             @if ($errors->has('limit'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('limit') }}</strong></span>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            <label for="format" class="col-form-label">Format</label>
+            <label for="format" class="col-form-label">Формат</label>
             <select id="format" class="form-control{{ $errors->has('format') ? ' is-invalid' : '' }}" name="format">
                 @foreach ($formats as $value)
                     <option value="{{ $value }}"{{ $value === old('format') ? ' selected' : '' }}>{{ $value }}</option>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            <label for="file" class="col-form-label">Banner</label>
+            <label for="file" class="col-form-label">Баннер</label>
             <input id="file" type="file" class="form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" name="file" required>
             @if ($errors->has('file'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('file') }}</strong></span>
@@ -51,7 +51,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
         </div>
     </form>
 

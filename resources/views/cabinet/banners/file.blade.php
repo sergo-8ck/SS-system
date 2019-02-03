@@ -8,7 +8,7 @@
         @method('PUT')
 
         <div class="form-group">
-            <label for="format" class="col-form-label">Format</label>
+            <label for="format" class="col-form-label">Формат</label>
             <select id="format" class="form-control{{ $errors->has('format') ? ' is-invalid' : '' }}" name="format">
                 @foreach ($formats as $value)
                     <option value="{{ $value }}"{{ $value === old('format', $banner->format) ? ' selected' : '' }}>{{ $value }}</option>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="form-group">
-            <label for="file" class="col-form-label">Banner</label>
+            <label for="file" class="col-form-label">Баннер</label>
             <input id="file" type="file" class="form-control{{ $errors->has('file') ? ' is-invalid' : '' }}" name="file" required>
             @if ($errors->has('file'))
                 <span class="invalid-feedback"><strong>{{ $errors->first('file') }}</strong></span>
@@ -28,7 +28,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
         </div>
     </form>
 

@@ -2,9 +2,9 @@
 
 @section('breadcrumbs')
     <ul class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('home')  }}">Home</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('login')  }}">Login</a></li>
-        <li class="breadcrumb-item active">Reset</li>
+        <li class="breadcrumb-item"><a href="{{ route('home')  }}">Главная</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('login')  }}">Логин</a></li>
+        <li class="breadcrumb-item active">Сборс</li>
     </ul>
 @endsection
 
@@ -12,7 +12,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Reset Password</div>
+                <div class="card-header">Сбросить пароль</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.email') }}">
@@ -35,7 +35,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Send Password Reset Link
+                                    Отправить ссылку для сброса пароля
                                 </button>
                             </div>
                         </div>

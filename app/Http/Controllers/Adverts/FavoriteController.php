@@ -30,7 +30,7 @@ class FavoriteController extends Controller
             return back()->with('error', $e->getMessage());
         }
 
-        return redirect()->route('adverts.show', $advert)->with('success', 'Advert is added to your favorites.');
+        return redirect()->route('adverts.show', $advert)->with('success', 'Продукт добавлен в избранное.');
     }
 
     public function remove(Advert $advert)

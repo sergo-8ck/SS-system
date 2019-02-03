@@ -36,7 +36,7 @@
                     <label for="address" class="col-form-label">Адрес</label>
                     <div class="row">
                         <div class="col-md-11">
-                            <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address', $region->getAddress()) }}" required>
+                            <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ $region ? old('address', $region->getAddress()) : '' }}" required>
                             @if ($errors->has('address'))
                                 <span class="invalid-feedback"><strong>{{ $errors->first('address') }}</strong></span>
                             @endif
@@ -98,7 +98,7 @@
         </div>
 
         <div class="form-group">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
         </div>
     </form>
 
