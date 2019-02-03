@@ -29,15 +29,15 @@ class ModerationPassedNotification extends Notification implements ShouldQueue
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject('Moderation is passed')
-            ->greeting('Hello!')
-            ->line('Your advert successfully passed a moderation.')
-            ->action('View Advert', route('adverts.show', $this->advert))
-            ->line('Thank you for using our application!');
+            ->subject('Модерация пройдена')
+            ->greeting('Привет!')
+            ->line('Ваш продукт успешно прошел модерацию.')
+            ->action('Посмотреть продукт', route('adverts.show', $this->advert))
+            ->line('Спасибо за использование нашего приложения!');
     }
 
     public function toSms(): string
     {
-        return 'Your advert successfully passed a moderation.';
+        return 'Ваш продукт успешно прошел модерацию.';
     }
 }

@@ -9,6 +9,7 @@
         <thead>
         <tr>
             <th>Название</th>
+            <th>Название</th>
             <th>Slug</th>
             <th></th>
         </tr>

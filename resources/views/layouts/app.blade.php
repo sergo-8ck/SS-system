@@ -103,7 +103,7 @@
     <footer>
         <div class="container">
             <div class="border-top pt-3">
-                <p>&copy; {{ date('Y') }} - Adverts</p>
+                <p>&copy; {{ date('Y') }} - ВНИИС ПРОДМАШ</p>
             </div>
         </div>
     </footer>

@@ -51,13 +51,13 @@
   <div class="bottom-footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-12"><p>&copy; Copyrights 2018. All Rights Reserved.</p></div>
+        <div class="col-md-6 col-12"><p>&copy; {{ date('Y') }} - ВНИИС ПРОДМАШ</p></div>
         <div class="col-md-6 col-12">
           <ul>
-            <li><a href="about.html">О нас</a></li>
-            <li><a href="service.html">Решения</a></li>
+            <li><a href="#">О нас</a></li>
+            <li><a href="#">Решения</a></li>
             <li><a href="#">FAQ’s</a></li>
-            <li><a href="contact.html">Контакты</a></li>
+            <li><a href="#">Контакты</a></li>
           </ul>
         </div>
       </div>
