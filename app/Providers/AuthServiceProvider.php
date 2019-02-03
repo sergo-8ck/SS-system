@@ -59,7 +59,7 @@ class AuthServiceProvider extends ServiceProvider
         });
 
         Gate::define('show-advert', function (User $user, Advert $advert) {
-            return $user->isAdmin() || $user->isModerator() || $advert->user_id === $user->id;
+            return $user->isAdmin() || $user->isModerator() || $advert->user_id == $user->id;
         });
 
         Gate::define('manage-own-subdomain', function (User $user) {
