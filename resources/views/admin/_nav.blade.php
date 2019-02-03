@@ -1,9 +1,9 @@
 <ul class="nav nav-tabs mb-3">
-    @can ('manage-adverts')
+    @can ('manage-users')
         <li class="nav-item">
-            <a class="nav-link{{ $page === '' ? ' active' : '' }}"
-               href="{{ route('admin.home') }}">
-                {{config('admin.menu.dashboard')}}
+            <a class="nav-link{{ $page === 'users' ? ' active' : '' }}"
+               href="{{ route('admin.users.index') }}">
+                {{config('admin.menu.users')}}
             </a>
         </li>
     @endcan
@@ -43,14 +43,6 @@
         <li class="nav-item">
             <a class="nav-link{{ $page === 'pages' ? ' active' : '' }}"
                href="{{ route('admin.pages.index') }}">{{config('admin.menu.pages')}}
-            </a>
-        </li>
-    @endcan
-    @can ('manage-users')
-        <li class="nav-item">
-            <a class="nav-link{{ $page === 'users' ? ' active' : '' }}"
-               href="{{ route('admin.users.index') }}">
-                {{config('admin.menu.users')}}
             </a>
         </li>
     @endcan

@@ -67,6 +67,7 @@
             <th>ID</th>
             <th>Имя</th>
             <th>Email</th>
+            <th>Сертификат</th>
             <th>Статус</th>
             <th>Роль</th>
         </tr>
@@ -78,6 +79,13 @@
                 <td><a href="{{ route('sub.userid', $user, true) }}">{{ $user->id }}</a></td>
                 <td><a href="{{ route('admin.users.show', $user) }}">{{ $user->name }}</a></td>
                 <td>{{ $user->email }}</td>
+                @if($user->isAdmin())
+                    <td>Админ</td>
+                @elseif($user->isModerator())
+                    <td>Модератор</td>
+                @else
+                    <td><a href="{{ route('certificate-pdf', $user) }}">{{ $user->serial->serial }}</a></td>
+                @endif
                 <td>
                     @if ($user->isWait())
                         <span class="badge badge-secondary">Ожидает</span>
@@ -89,6 +97,8 @@
                 <td>
                     @if ($user->isAdmin())
                         <span class="badge badge-danger">Администратор</span>
+                    @elseif($user->isModerator())
+                        <span class="badge badge-success">Модератор</span>
                     @else
                         <span class="badge badge-secondary">Пользователь</span>
                     @endif
