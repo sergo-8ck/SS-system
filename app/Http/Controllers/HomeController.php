@@ -14,7 +14,7 @@ class HomeController extends Controller
         $categories = Category::whereIsRoot()->defaultOrder()->getModels();
 
         return view('front/index', compact('regions', 'categories'))
-          ->with('description', 'Lara - Главная страница')
-          ->with('title', 'Lara - Главная страница');
+          ->with('description', env('APP_NAME') . ' - Главная')
+          ->with('title', env('APP_NAME') . ' - Главная');
     }
 }

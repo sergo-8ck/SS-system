@@ -13,5 +13,6 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer('layouts.app', MenuPagesComposer::class);
         View::composer('front.layouts.header', MenuPagesComposer::class);
         View::composer('front.page', MenuPagesComposer::class);
+        View::composer('front.layouts.footer', MenuPagesComposer::class);
     }
 }

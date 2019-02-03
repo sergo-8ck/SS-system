@@ -935,6 +935,15 @@ body .theme-button-one:hover {background:#000f32; }
   margin-left: 35px;
 }
 .theme-footer-one .bottom-footer ul li a:hover  {color: #fff;}
+
+.theme-footer-one .bottom-footer ul li a.dropdown-item {
+  color: #000000;
+  margin-left: 0;
+}
+.theme-footer-one .bottom-footer ul li a.dropdown-item:hover {
+  color: #545454;
+}
+
 /*---------------------- Theme footer Two ------------------*/
 .theme-footer-two {background: #001648;padding-top: 75px;}
 .theme-footer-two .logo-widget p {

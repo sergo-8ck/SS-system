@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>ВНИИС ПРОДМАШ</title>
+    <title>{{ env('APP_NAME') }}</title>
     @yield('meta')
 
     <!-- Styles -->
@@ -104,7 +104,7 @@
     <footer>
         <div class="container">
             <div class="border-top pt-3">
-                <p>&copy; {{ date('Y') }} - ВНИИС ПРОДМАШ</p>
+                <p>&copy; {{ date('Y') }} - {{env('APP_NAME')}}</p>
             </div>
         </div>
     </footer>

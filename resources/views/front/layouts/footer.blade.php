@@ -51,13 +51,24 @@
   <div class="bottom-footer">
     <div class="container">
       <div class="row">
-        <div class="col-md-6 col-12"><p>&copy; {{ date('Y') }} - ВНИИС ПРОДМАШ</p></div>
+        <div class="col-md-6 col-12"><p>&copy; {{ date('Y') }} - {{env('APP_NAME')}}</p></div>
         <div class="col-md-6 col-12">
           <ul>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Решения</a></li>
-            <li><a href="#">FAQ’s</a></li>
-            <li><a href="#">Контакты</a></li>
+            @foreach (array_slice($menuPages, 0, 3) as $page)
+              <li><a href="{{ route('page', page_path($page)) }}">{{ $page->getMenuTitle() }}</a></li>
+            @endforeach
+            @if ($morePages = array_slice($menuPages, 3))
+              <li class="nav-item dropdown">
+                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Больше... <span class="caret"></span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  @foreach ($morePages as $page)
+                    <a class="dropdown-item" href="{{ route('page', page_path($page)) }}">{{ $page->getMenuTitle() }}</a>
+                  @endforeach
+                </div>
+              </li>
+            @endif
           </ul>
         </div>
       </div>
