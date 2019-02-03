@@ -54,7 +54,21 @@
             <ul class="clearfix">
               <li><a href="/">Главная</a></li>
               @foreach (array_slice($menuPages, 0, 3) as $page)
-                <li><a href="{{ route('page', page_path($page)) }}">{{ $page->getMenuTitle() }}</a></li>
+                @if($page->children)
+                  <li class="nav-item dropdown">
+                    <a id="{{$page->slug}}" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      {{ $page->getMenuTitle() }}<span class="caret"></span>
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="{{ $page->slug }}">
+                      @foreach ($page->children as $child)
+                        <a class="dropdown-item" href="{{ route('page', page_path($child)) }}">{{ $child->title }}</a>
+                      @endforeach
+                    </div>
+                  </li>
+
+                @else
+                  <li><a href="{{ route('page', page_path($page)) }}">{{ $page->getMenuTitle() }}</a></li>
+                @endif
               @endforeach
               @if ($morePages = array_slice($menuPages, 3))
                 <li class="nav-item dropdown">

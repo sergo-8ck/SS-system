@@ -10,6 +10,8 @@ class PageController extends Controller
     {
         $page = $path->page;
 
-        return view('page', compact('page'));
+        return view('front.page', compact('page'))
+            ->with('description', $page->title)
+            ->with('title', $page->description);
     }
 }
